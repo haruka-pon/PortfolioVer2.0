@@ -49,27 +49,32 @@
 :root {
   --radius: 0.625rem;
   /* Deep Navy Brand Colors - Reliability */
-  --background: oklch(0.985 0 0); /* White/Light */
-  --foreground: oklch(0.15 0.05 260); /* Deep Navy Text */
-  
+  --background: oklch(0.985 0 0);
+  /* White/Light */
+  --foreground: oklch(0.15 0.05 260);
+  /* Deep Navy Text */
+
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.15 0.05 260);
-  
+
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.15 0.05 260);
-  
-  --primary: oklch(0.25 0.1 260); /* Navy Blue */
+
+  --primary: oklch(0.25 0.1 260);
+  /* Navy Blue */
   --primary-foreground: oklch(0.985 0 0);
-  
-  --secondary: oklch(0.96 0.02 260); /* Light Navy Tint */
+
+  --secondary: oklch(0.96 0.02 260);
+  /* Light Navy Tint */
   --secondary-foreground: oklch(0.25 0.1 260);
-  
+
   --muted: oklch(0.96 0.02 260);
   --muted-foreground: oklch(0.5 0.05 260);
-  
-  --accent: oklch(0.94 0.05 260); /* Accent tint */
+
+  --accent: oklch(0.94 0.05 260);
+  /* Accent tint */
   --accent-foreground: oklch(0.25 0.1 260);
-  
+
   --destructive: oklch(0.577 0.245 27.325);
   --border: oklch(0.9 0.02 260);
   --input: oklch(0.9 0.02 260);
@@ -92,27 +97,29 @@
 }
 
 .dark {
-  --background: oklch(0.1 0.05 260); /* Deep Dark Navy */
+  --background: oklch(0.1 0.05 260);
+  /* Deep Dark Navy */
   --foreground: oklch(0.985 0 0);
-  
+
   --card: oklch(0.13 0.05 260);
   --card-foreground: oklch(0.985 0 0);
-  
+
   --popover: oklch(0.13 0.05 260);
   --popover-foreground: oklch(0.985 0 0);
-  
-  --primary: oklch(0.9 0.05 260); /* Lighter Blue/White for contrast on dark */
+
+  --primary: oklch(0.9 0.05 260);
+  /* Lighter Blue/White for contrast on dark */
   --primary-foreground: oklch(0.15 0.05 260);
-  
+
   --secondary: oklch(0.2 0.05 260);
   --secondary-foreground: oklch(0.985 0 0);
-  
+
   --muted: oklch(0.2 0.05 260);
   --muted-foreground: oklch(0.7 0.05 260);
-  
+
   --accent: oklch(0.2 0.05 260);
   --accent-foreground: oklch(0.985 0 0);
-  
+
   --destructive: oklch(0.7 0.191 22.216);
   --border: oklch(0.2 0.05 260);
   --input: oklch(0.2 0.05 260);
@@ -138,7 +145,13 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
+    background:
+      radial-gradient(circle at 15% 50%, rgba(78, 205, 196, 0.08), transparent 25%),
+      radial-gradient(circle at 85% 30%, rgba(255, 107, 107, 0.08), transparent 25%),
+      var(--background);
+    /* Fallback to theme background */
   }
 }

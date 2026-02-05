@@ -5,7 +5,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { TiltCard } from "@/components/ui/tilt-card";
-import { ExternalLink, Github } from "lucide-react";
+import { Github } from "lucide-react";
 
 // Placeholder data since no specific projects were listed
 const PROJECTS = [
@@ -102,16 +102,10 @@ export function Projects() {
                                         </div>
                                     </CardContent>
                                     <CardFooter className="flex flex-col sm:flex-row gap-2 pt-4 border-t bg-muted/20">
-                                        <Button variant="outline" size="sm" className="w-full sm:w-1/2" asChild>
+                                        <Button variant="outline" size="sm" className="w-full" asChild>
                                             <a href={project.repoUrl} target="_blank" rel="noopener noreferrer">
                                                 <Github className="mr-2 h-4 w-4" />
                                                 Code
-                                            </a>
-                                        </Button>
-                                        <Button size="sm" className="w-full sm:w-1/2" asChild>
-                                            <a href={project.demoUrl} target="_blank" rel="noopener noreferrer">
-                                                <ExternalLink className="mr-2 h-4 w-4" />
-                                                Demo
                                             </a>
                                         </Button>
                                     </CardFooter>

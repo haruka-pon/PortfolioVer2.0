@@ -37,19 +37,23 @@ export function BackgroundCanvas() {
             mouse.y = e.clientY;
         });
 
+        const colors = ["#FF6B6B", "#4ECDC4", "#45B7D1", "#96CEB4", "#FFEEAD"];
+
         class Particle {
             x: number;
             y: number;
             vx: number;
             vy: number;
             size: number;
+            color: string;
 
             constructor() {
                 this.x = Math.random() * canvas!.width;
                 this.y = Math.random() * canvas!.height;
-                this.vx = (Math.random() - 0.5) * 0.5; // Slow movement
-                this.vy = (Math.random() - 0.5) * 0.5;
-                this.size = Math.random() * 2 + 1;
+                this.vx = (Math.random() - 0.5) * 0.8; // Slightly faster
+                this.vy = (Math.random() - 0.5) * 0.8;
+                this.size = Math.random() * 3 + 1; // Slightly larger
+                this.color = colors[Math.floor(Math.random() * colors.length)];
             }
 
             update() {
@@ -69,7 +73,7 @@ export function BackgroundCanvas() {
                     const forceDirectionX = dx / distance;
                     const forceDirectionY = dy / distance;
                     const force = (mouseSafetyRadius - distance) / mouseSafetyRadius;
-                    const directionX = forceDirectionX * force * 1; // Repel strength
+                    const directionX = forceDirectionX * force * 1;
                     const directionY = forceDirectionY * force * 1;
                     this.vx -= directionX * 0.05;
                     this.vy -= directionY * 0.05;
@@ -78,10 +82,12 @@ export function BackgroundCanvas() {
 
             draw() {
                 if (!ctx) return;
-                ctx.fillStyle = "rgba(100, 149, 237, 0.5)"; // CornflowerBlue with opacity
+                ctx.fillStyle = this.color;
+                ctx.globalAlpha = 0.6;
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
                 ctx.fill();
+                ctx.globalAlpha = 1.0;
             }
         }
 
@@ -107,7 +113,9 @@ export function BackgroundCanvas() {
                     const distance = Math.sqrt(dx * dx + dy * dy);
 
                     if (distance < connectionDistance) {
-                        ctx.strokeStyle = `rgba(100, 149, 237, ${1 - distance / connectionDistance})`;
+                        // Gradient for connection? Or just average color
+                        // Let's use a subtle white/gray for connections to avoid rainbow mess, or use particle color
+                        ctx.strokeStyle = `rgba(150, 150, 150, ${0.2 * (1 - distance / connectionDistance)})`;
                         ctx.lineWidth = 0.5;
                         ctx.beginPath();
                         ctx.moveTo(particle.x, particle.y);
@@ -119,7 +127,6 @@ export function BackgroundCanvas() {
 
             animationFrameId = requestAnimationFrame(animate);
         };
-
         init();
         animate();
 
