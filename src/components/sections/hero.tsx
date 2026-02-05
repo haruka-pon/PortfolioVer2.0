@@ -22,7 +22,7 @@ export function Hero() {
             className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-background"
         >
             {/* Background Physics Elements - Floating Skills */}
-            <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+            <div className="absolute inset-0 z-0 h-full w-full pointer-events-none">
                 {SKILLS.map((skill, index) => (
                     <PhysicsElement key={skill.name} delay={index * 0.2}>
                         <div className="px-4 py-2 rounded-full bg-secondary/80 border border-primary/20 backdrop-blur-sm text-sm font-semibold pointer-events-auto cursor-grab active:cursor-grabbing shadow-lg hover:border-primary transition-colors hover:bg-secondary">
@@ -69,12 +69,14 @@ export function Hero() {
                     transition={{ delay: 0.4, duration: 0.5 }}
                     className="flex flex-col sm:flex-row gap-4 mt-8"
                 >
-                    <Button size="lg" className="group rounded-full px-8">
-                        View Projects
-                        <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    <Button size="lg" className="group rounded-full px-8" asChild>
+                        <a href="#projects">
+                            View Projects
+                            <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                        </a>
                     </Button>
-                    <Button size="lg" variant="outline" className="rounded-full px-8">
-                        Contact Me
+                    <Button size="lg" variant="outline" className="rounded-full px-8" asChild>
+                        <a href="#contact">Contact Me</a>
                     </Button>
                 </motion.div>
             </motion.div>
@@ -102,30 +104,33 @@ function PhysicsElement({
             initial={{ opacity: 0, x: initialX, y: initialY }}
             animate={{
                 opacity: 1,
-                y: [0, -20, 0],
-                x: [0, 10, 0],
+                y: [0, Math.random() * -30 - 10, 0, Math.random() * 30 + 10, 0],
+                x: [0, Math.random() * 20 + 5, 0, Math.random() * -20 - 5, 0],
+                rotate: [0, Math.random() * 10 - 5, 0, Math.random() * -10 + 5, 0],
             }}
             transition={{
                 y: {
-                    duration: 3,
+                    duration: 5 + Math.random() * 3,
                     repeat: Infinity,
                     ease: "easeInOut",
                     delay: delay,
-                    repeatType: "reverse",
                 },
                 x: {
-                    duration: 4,
+                    duration: 7 + Math.random() * 3,
                     repeat: Infinity,
                     ease: "easeInOut",
                     delay: delay + 1,
-                    repeatType: "reverse",
+                },
+                rotate: {
+                    duration: 10 + Math.random() * 5,
+                    repeat: Infinity,
+                    ease: "easeInOut",
                 },
                 opacity: { duration: 1 },
             }}
             className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
             style={{
                 zIndex: 1,
-                // Randomize initial position slightly
                 marginLeft: Math.random() * 600 - 300,
                 marginTop: Math.random() * 400 - 200,
             }}
