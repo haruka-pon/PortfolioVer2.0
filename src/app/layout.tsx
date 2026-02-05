@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { SITE_CONFIG } from "@/lib/constants";
 import { Header } from "@/components/shared/header";
 import { Footer } from "@/components/shared/footer";
+import { BackgroundCanvas } from "@/components/shared/background-canvas";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -36,6 +37,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground flex flex-col min-h-screen`}
       >
+        <BackgroundCanvas />
         <Header />
         <main className="flex-1 pt-20">
           {children}
