@@ -63,7 +63,7 @@ export function DogCursor() {
                     >
                         {/* Using the generated image */}
                         <Image
-                            src="/dog_cursor.webp"
+                            src="/dog-cursor.png"
                             alt="Dog Cursor"
                             width={64}
                             height={64}
