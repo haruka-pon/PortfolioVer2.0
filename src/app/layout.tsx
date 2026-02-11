@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { M_PLUS_Rounded_1c, Geist_Mono } from "next/font/google";
+import { Zen_Kaku_Gothic_New, Geist_Mono } from "next/font/google";
 import { SITE_CONFIG } from "@/lib/constants";
 import { Header } from "@/components/shared/header";
 import { Footer } from "@/components/shared/footer";
@@ -8,10 +8,10 @@ import { DogProvider } from "@/context/dog-context";
 import { DogCursor } from "@/components/ui/dog-cursor";
 import "./globals.css";
 
-const mplus = M_PLUS_Rounded_1c({
-  weight: ["100", "300", "400", "500", "700", "800", "900"],
+const zenKaku = Zen_Kaku_Gothic_New({
+  weight: ["300", "400", "500", "700", "900"],
   subsets: ["latin"],
-  variable: "--font-mplus",
+  variable: "--font-zen-kaku",
 });
 
 const geistMono = Geist_Mono({
@@ -38,7 +38,7 @@ export default function RootLayout({
   return (
     <html lang="ja" className="scroll-smooth">
       <body
-        className={`${mplus.variable} ${geistMono.variable} antialiased bg-background text-foreground flex flex-col min-h-screen`}
+        className={`${zenKaku.variable} ${geistMono.variable} antialiased bg-background text-foreground flex flex-col min-h-screen font-sans`}
       >
         <DogProvider>
           <DogCursor />

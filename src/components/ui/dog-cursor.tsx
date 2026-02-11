@@ -73,22 +73,8 @@ export function DogCursor() {
                 </motion.div>
             )}
 
-            {/* Control Button */}
-            <div className="fixed bottom-4 right-4 z-50">
-                <Button
-                    onClick={toggleWalk}
-                    variant="secondary"
-                    size="icon"
-                    className="rounded-full shadow-lg hover:scale-110 transition-transform w-12 h-12 bg-white/80 backdrop-blur-sm border-2 border-primary/20"
-                >
-                    {isWalking ? (
-                        <Home className="w-6 h-6 text-primary" />
-                    ) : (
-                        <Footprints className="w-6 h-6 text-muted-foreground" />
-                    )}
-                    <span className="sr-only">{isWalking ? "Stop Walking" : "Start Walking"}</span>
-                </Button>
-            </div>
+            {/* Control Button - Moved to SanpoSection */}
+            {/* <div className="fixed bottom-4 right-4 z-50">...</div> */}
         </>
     );
 }
