@@ -1,14 +1,17 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { M_PLUS_Rounded_1c, Geist_Mono } from "next/font/google";
 import { SITE_CONFIG } from "@/lib/constants";
 import { Header } from "@/components/shared/header";
 import { Footer } from "@/components/shared/footer";
 import { BackgroundCanvas } from "@/components/shared/background-canvas";
+import { DogProvider } from "@/context/dog-context";
+import { DogCursor } from "@/components/ui/dog-cursor";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const mplus = M_PLUS_Rounded_1c({
+  weight: ["100", "300", "400", "500", "700", "800", "900"],
   subsets: ["latin"],
+  variable: "--font-mplus",
 });
 
 const geistMono = Geist_Mono({
@@ -35,14 +38,17 @@ export default function RootLayout({
   return (
     <html lang="ja" className="scroll-smooth">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground flex flex-col min-h-screen`}
+        className={`${mplus.variable} ${geistMono.variable} antialiased bg-background text-foreground flex flex-col min-h-screen`}
       >
-        <BackgroundCanvas />
-        <Header />
-        <main className="flex-1 pt-20">
-          {children}
-        </main>
-        <Footer />
+        <DogProvider>
+          <DogCursor />
+          <BackgroundCanvas />
+          <Header />
+          <main className="flex-1 pt-20">
+            {children}
+          </main>
+          <Footer />
+        </DogProvider>
       </body>
     </html>
   );
