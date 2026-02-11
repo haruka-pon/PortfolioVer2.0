@@ -8,7 +8,7 @@ const PROFILE_ITEMS = [
     { label: "Name", value: "八木 晴風 (Yagi Haruka)", icon: User },
     { label: "Birthday", value: "2001 / 11 / 27", icon: Calendar },
     { label: "From", value: "奈良県 (Nara, japan)", icon: MapPin },
-    { label: "Hobby", value: "Gym, Game, Nighttime Wandering", icon: Gamepad2 },
+    { label: "Hobby", value: "ジム, ゲーム, サウナ, イラスト(お粗末)", icon: Gamepad2 },
 ];
 
 export function ProfileSection() {
@@ -30,16 +30,12 @@ export function ProfileSection() {
                 className="space-y-12 relative z-10"
             >
                 <div className="text-center space-y-4">
-                    <div className="w-32 h-32 mx-auto bg-secondary rounded-full flex items-center justify-center text-4xl shadow-inner relative">
-                        {/* Placeholder for Icon */}
-                        🐈
-                    </div>
                     <div className="flex justify-center gap-4">
                         <button
                             onClick={handleWankoClick}
                             className="text-sm font-bold text-primary border border-primary/30 px-4 py-1.5 rounded-full hover:bg-primary hover:text-white transition-all duration-300 shadow-sm"
                         >
-                            Hello Wanko 🐾
+                            Hello Wanko
                         </button>
                     </div>
                     {/* Old text removed as requested */}
