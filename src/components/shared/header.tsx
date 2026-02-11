@@ -103,9 +103,6 @@ export function Header() {
                                     {link.name}
                                 </Link>
                             ))}
-                            <Link href="/works" className="text-xl font-bold tracking-widest hover:text-primary transition-colors" onClick={() => setIsMobileMenuOpen(false)}>
-                                Works
-                            </Link>
                         </nav>
                     </motion.div>
                 )}

@@ -9,8 +9,8 @@ export const SITE_CONFIG = {
 
 export const NAVIGATION_LINKS = [
   { name: "Home", href: "/" },
-  { name: "About", href: "#about" },
-  { name: "Projects", href: "#projects" },
+  { name: "About", href: "/#about" },
+  { name: "Works", href: "/works" },
   { name: "Contact", href: "#contact" },
 ];
 

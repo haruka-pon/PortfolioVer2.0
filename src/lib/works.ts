@@ -7,6 +7,7 @@ export interface Project {
     tags: string[];
     demoUrl: string;
     repoUrl: string;
+    image: string;
 }
 
 export const PROJECTS: Project[] = [
@@ -17,6 +18,7 @@ export const PROJECTS: Project[] = [
         tags: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
         demoUrl: "#",
         repoUrl: "https://github.com/haruka-pon/PortfolioVer2.0",
+        image: "https://placehold.co/600x400/orange/white?text=Portfolio",
     },
     {
         title: "Task Management System",
@@ -25,6 +27,7 @@ export const PROJECTS: Project[] = [
         tags: ["Laravel", "React", "MySQL", "Docker"],
         demoUrl: "#",
         repoUrl: "#",
+        image: "https://placehold.co/600x400/blue/white?text=Task+App",
     },
     {
         title: "E-Commerce Dashboard",
@@ -33,5 +36,6 @@ export const PROJECTS: Project[] = [
         tags: ["Vue.js", "Node.js", "Chart.js"],
         demoUrl: "#",
         repoUrl: "#",
+        image: "https://placehold.co/600x400/green/white?text=Dashboard",
     },
 ];

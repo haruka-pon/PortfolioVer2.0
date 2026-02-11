@@ -12,7 +12,7 @@ const PROFILE_ITEMS = [
 
 export function ProfileSection() {
     return (
-        <section className="py-20 px-4 max-w-3xl mx-auto">
+        <section id="about" className="py-20 px-4 max-w-3xl mx-auto">
             <motion.div
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
