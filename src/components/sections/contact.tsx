@@ -61,9 +61,12 @@ export function Contact() {
                 >
                     <div className="text-center mb-8">
                         <h2 className="text-3xl font-bold tracking-tighter mb-2">Contact Me</h2>
-                        <p className="text-muted-foreground">
+                        <p className="text-muted-foreground mb-4">
                             お仕事のご依頼やご質問など、お気軽にお問い合わせください。
                         </p>
+                        <a href="mailto:yagi.haruka.11@gmail.com" className="text-primary font-medium hover:underline text-lg">
+                            yagi.haruka.11@gmail.com
+                        </a>
                     </div>
 
                     <Card>

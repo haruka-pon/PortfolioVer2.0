@@ -26,6 +26,7 @@ export const PROFILE = {
     },
     // Add others if provided, for now only GitHub is known
   ],
+  email: "yagi.haruka.11@gmail.com",
 };
 
 export const SKILLS = [
