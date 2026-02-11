@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { User, Calendar, MapPin, Gamepad2 } from "lucide-react";
 
 const PROFILE_ITEMS = [
@@ -11,29 +12,37 @@ const PROFILE_ITEMS = [
 ];
 
 export function ProfileSection() {
+    const [isWankoVisible, setIsWankoVisible] = useState(false);
+
+    const handleWankoClick = () => {
+        if (isWankoVisible) return;
+        setIsWankoVisible(true);
+        setTimeout(() => setIsWankoVisible(false), 2000);
+    };
+
     return (
-        <section id="about" className="py-20 px-4 max-w-3xl mx-auto">
+        <section id="about" className="py-20 px-4 max-w-3xl mx-auto overflow-hidden relative">
             <motion.div
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
-                className="space-y-12"
+                className="space-y-12 relative z-10"
             >
                 <div className="text-center space-y-4">
-                    <div className="w-32 h-32 mx-auto bg-secondary rounded-full flex items-center justify-center text-4xl shadow-inner">
+                    <div className="w-32 h-32 mx-auto bg-secondary rounded-full flex items-center justify-center text-4xl shadow-inner relative">
                         {/* Placeholder for Icon */}
                         🐈
                     </div>
                     <div className="flex justify-center gap-4">
-                        {/* Placeholder for QR Code interaction or visual */}
-                        <div className="text-xs text-muted-foreground border px-2 py-1 rounded-md">
-                            DogRunLink Stub
-                        </div>
+                        <button
+                            onClick={handleWankoClick}
+                            className="text-sm font-bold text-primary border border-primary/30 px-4 py-1.5 rounded-full hover:bg-primary hover:text-white transition-all duration-300 shadow-sm"
+                        >
+                            Hello Wanko 🐾
+                        </button>
                     </div>
-                    <p className="leading-relaxed text-muted-foreground">
-                        親譲りの無鉄砲で小供の時から損ばかりしている。小学校に居る時分学校の二階から飛び降りて一週間ほど腰を抜かした事がある。なぜそんな無闇をしたと聞く人があるかも知れぬ。
-                    </p>
+                    {/* Old text removed as requested */}
                 </div>
 
                 <div className="bg-white/50 dark:bg-black/20 backdrop-blur-sm rounded-3xl p-8 shadow-sm border border-white/50">
@@ -58,6 +67,31 @@ export function ProfileSection() {
                     </div>
                 </div>
             </motion.div>
+
+            {/* Wanko Animation */}
+            <AnimatePresence>
+                {isWankoVisible && (
+                    <motion.div
+                        initial={{ x: "100%", opacity: 0, rotate: 10 }}
+                        animate={{ x: 0, opacity: 1, rotate: 0 }}
+                        exit={{ x: "100%", opacity: 0, rotate: 10 }}
+                        transition={{ type: "spring", stiffness: 100, damping: 15 }}
+                        className="absolute top-20 right-0 md:right-20 z-0 pointer-events-none"
+                    >
+                        <div className="relative">
+                            <img src="/dog-cursor.png" alt="Wanko" className="w-32 h-32 object-contain drop-shadow-xl" />
+                            <motion.div
+                                initial={{ scale: 0, opacity: 0 }}
+                                animate={{ scale: 1, opacity: 1 }}
+                                transition={{ delay: 0.3 }}
+                                className="absolute -top-4 -left-4 bg-white text-black text-xs font-bold px-3 py-1 rounded-full shadow-lg border border-gray-200"
+                            >
+                                Wan! 🐕
+                            </motion.div>
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </section>
     );
 }
