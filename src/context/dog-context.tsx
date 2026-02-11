@@ -10,7 +10,7 @@ interface DogContextType {
 const DogContext = createContext<DogContextType | undefined>(undefined);
 
 export function DogProvider({ children }: { children: React.ReactNode }) {
-    const [isWalking, setIsWalking] = useState(true);
+    const [isWalking, setIsWalking] = useState(false);
 
     // Optional: Persist state to localStorage if desired
     useEffect(() => {

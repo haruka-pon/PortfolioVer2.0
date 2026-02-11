@@ -60,6 +60,12 @@ export function ProfileSection() {
                                 <div className="flex-1 font-medium">{item.value}</div>
                             </motion.div>
                         ))}
+
+                        <div className="pt-4 border-t border-dashed border-primary/20">
+                            <p className="leading-relaxed text-muted-foreground">
+                                年を重ねるにつれて衰えを感じ始めたので、ジムに通い始めました。
+                            </p>
+                        </div>
                     </div>
                 </div>
             </motion.div>
@@ -72,7 +78,7 @@ export function ProfileSection() {
                         animate={{ x: 0, opacity: 1, rotate: 0 }}
                         exit={{ x: "100%", opacity: 0, rotate: 10 }}
                         transition={{ type: "spring", stiffness: 100, damping: 15 }}
-                        className="absolute top-20 right-0 md:right-20 z-0 pointer-events-none"
+                        className="absolute top-40 right-0 md:right-20 z-0 pointer-events-none"
                     >
                         <div className="relative">
                             <img src="/dog-cursor.png" alt="Wanko" className="w-32 h-32 object-contain drop-shadow-xl" />
@@ -82,7 +88,7 @@ export function ProfileSection() {
                                 transition={{ delay: 0.3 }}
                                 className="absolute -top-4 -left-4 bg-white text-black text-xs font-bold px-3 py-1 rounded-full shadow-lg border border-gray-200"
                             >
-                                Wan! 🐕
+                                ワンワン
                             </motion.div>
                         </div>
                     </motion.div>
