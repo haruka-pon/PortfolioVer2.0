@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { User, Calendar, MapPin, Gamepad2 } from "lucide-react";
 
@@ -11,8 +11,28 @@ const PROFILE_ITEMS = [
     { label: "Hobby", value: "ジム, ゲーム, サウナ, イラスト(お粗末)", icon: Gamepad2 },
 ];
 
+const TERMINAL_TEXT = '> hello_wanko --run';
+
 export function ProfileSection() {
     const [isWankoVisible, setIsWankoVisible] = useState(false);
+    const [displayedText, setDisplayedText] = useState("");
+    const [isTypingDone, setIsTypingDone] = useState(false);
+
+    useEffect(() => {
+        let i = 0;
+        setDisplayedText("");
+        setIsTypingDone(false);
+        const interval = setInterval(() => {
+            if (i < TERMINAL_TEXT.length) {
+                setDisplayedText(TERMINAL_TEXT.slice(0, i + 1));
+                i++;
+            } else {
+                setIsTypingDone(true);
+                clearInterval(interval);
+            }
+        }, 80);
+        return () => clearInterval(interval);
+    }, []);
 
     const handleWankoClick = () => {
         if (isWankoVisible) return;
@@ -33,12 +53,46 @@ export function ProfileSection() {
                     <div className="flex justify-center gap-4">
                         <button
                             onClick={handleWankoClick}
-                            className="text-sm font-bold text-primary border border-primary/30 px-4 py-1.5 rounded-full hover:bg-primary hover:text-white transition-all duration-300 shadow-sm"
+                            className="group relative font-mono text-sm px-5 py-2.5 rounded-lg transition-all duration-300 shadow-lg hover:shadow-green-500/20 hover:scale-105 active:scale-95"
+                            style={{
+                                background: 'linear-gradient(145deg, #0d1117, #161b22)',
+                                border: '1px solid #30363d',
+                                color: '#3fb950',
+                            }}
                         >
-                            Hello Wanko
+                            {/* Scanline overlay */}
+                            <span
+                                className="absolute inset-0 rounded-lg pointer-events-none opacity-10"
+                                style={{
+                                    background: 'repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(63,185,80,0.05) 2px, rgba(63,185,80,0.05) 4px)',
+                                }}
+                            />
+                            {/* Terminal content */}
+                            <span className="relative flex items-center gap-1">
+                                <span style={{ color: '#8b949e' }}>$</span>
+                                <span>{displayedText}</span>
+                                <span
+                                    className={isTypingDone ? 'animate-pulse' : ''}
+                                    style={{
+                                        display: 'inline-block',
+                                        width: '8px',
+                                        height: '16px',
+                                        backgroundColor: '#3fb950',
+                                        marginLeft: '2px',
+                                        animation: isTypingDone ? undefined : 'none',
+                                        opacity: isTypingDone ? undefined : 1,
+                                    }}
+                                />
+                            </span>
+                            {/* Glow on hover */}
+                            <span
+                                className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+                                style={{
+                                    boxShadow: '0 0 15px rgba(63,185,80,0.15), inset 0 0 15px rgba(63,185,80,0.05)',
+                                }}
+                            />
                         </button>
                     </div>
-                    {/* Old text removed as requested */}
                 </div>
 
                 <div className="bg-white/50 dark:bg-black/20 backdrop-blur-sm rounded-3xl p-8 shadow-sm border border-white/50">
