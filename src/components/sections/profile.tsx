@@ -50,7 +50,7 @@ export function ProfileSection() {
                 className="space-y-12 relative z-10"
             >
                 <div className="text-center space-y-4">
-                    <div className="flex items-center justify-center gap-4">
+                    <div className="relative inline-flex justify-center">
                         <button
                             onClick={handleWankoClick}
                             className="group relative font-mono text-sm px-5 py-2.5 rounded-lg transition-all duration-300 shadow-lg hover:shadow-green-500/20 hover:scale-105 active:scale-95"
@@ -93,7 +93,7 @@ export function ProfileSection() {
                             />
                         </button>
 
-                        {/* Wanko Animation - inline next to button */}
+                        {/* Wanko Animation - absolute so it doesn't affect layout */}
                         <AnimatePresence>
                             {isWankoVisible && (
                                 <motion.div
@@ -101,7 +101,7 @@ export function ProfileSection() {
                                     animate={{ x: 0, opacity: 1, scale: 1 }}
                                     exit={{ x: 40, opacity: 0, scale: 0.5 }}
                                     transition={{ type: "spring", stiffness: 200, damping: 15 }}
-                                    className="pointer-events-none"
+                                    className="absolute left-full top-1/2 -translate-y-1/2 ml-3 pointer-events-none z-20"
                                 >
                                     <div className="relative">
                                         <img src="/dog-cursor.png" alt="Wanko" className="w-20 h-20 object-contain drop-shadow-xl" />
