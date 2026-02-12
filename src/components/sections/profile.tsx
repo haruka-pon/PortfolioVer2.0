@@ -50,7 +50,7 @@ export function ProfileSection() {
                 className="space-y-12 relative z-10"
             >
                 <div className="text-center space-y-4">
-                    <div className="relative inline-flex justify-center">
+                    <div className="flex justify-center">
                         <button
                             onClick={handleWankoClick}
                             className="group relative font-mono text-sm px-5 py-2.5 rounded-lg transition-all duration-300 shadow-lg hover:shadow-green-500/20 hover:scale-105 active:scale-95"
@@ -92,31 +92,6 @@ export function ProfileSection() {
                                 }}
                             />
                         </button>
-
-                        {/* Wanko Animation - absolute so it doesn't affect layout */}
-                        <AnimatePresence>
-                            {isWankoVisible && (
-                                <motion.div
-                                    initial={{ x: 40, opacity: 0, scale: 0.5 }}
-                                    animate={{ x: 0, opacity: 1, scale: 1 }}
-                                    exit={{ x: 40, opacity: 0, scale: 0.5 }}
-                                    transition={{ type: "spring", stiffness: 200, damping: 15 }}
-                                    className="absolute left-full top-1/2 -translate-y-1/2 ml-3 pointer-events-none z-20"
-                                >
-                                    <div className="relative">
-                                        <img src="/dog-cursor.png" alt="Wanko" className="w-20 h-20 object-contain drop-shadow-xl" />
-                                        <motion.div
-                                            initial={{ scale: 0, opacity: 0 }}
-                                            animate={{ scale: 1, opacity: 1 }}
-                                            transition={{ delay: 0.3 }}
-                                            className="absolute -top-3 -left-3 bg-white text-black text-xs font-bold px-2 py-0.5 rounded-full shadow-lg border border-gray-200"
-                                        >
-                                            ワンワン
-                                        </motion.div>
-                                    </div>
-                                </motion.div>
-                            )}
-                        </AnimatePresence>
                     </div>
                 </div>
 
@@ -150,6 +125,36 @@ export function ProfileSection() {
                     </div>
                 </div>
             </motion.div>
+
+            {/* Wanko Animation - fixed position, no layout impact */}
+            <AnimatePresence>
+                {isWankoVisible && (
+                    <motion.div
+                        initial={{ x: "100%", opacity: 0 }}
+                        animate={{ x: 0, opacity: 1 }}
+                        exit={{ x: "100%", opacity: 0 }}
+                        transition={{ type: "spring", stiffness: 120, damping: 14 }}
+                        className="fixed bottom-8 right-8 pointer-events-none z-50"
+                    >
+                        <div className="relative">
+                            <img
+                                src="/dog-cursor.png"
+                                alt="Wanko"
+                                className="w-28 h-28 object-contain drop-shadow-xl"
+                            />
+                            <motion.div
+                                initial={{ scale: 0, opacity: 0 }}
+                                animate={{ scale: 1, opacity: 1 }}
+                                transition={{ delay: 0.3 }}
+                                className="absolute -top-4 left-1/2 -translate-x-1/2 bg-white text-black text-xs font-bold px-3 py-1 rounded-full shadow-lg border border-gray-200"
+                                style={{ whiteSpace: 'nowrap' }}
+                            >
+                                ワンワン！
+                            </motion.div>
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </section>
     );
 }
