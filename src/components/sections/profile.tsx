@@ -41,7 +41,7 @@ export function ProfileSection() {
     };
 
     return (
-        <section id="about" className="py-20 px-4 max-w-3xl mx-auto overflow-hidden relative">
+        <section id="about" className="py-20 px-4 max-w-3xl mx-auto overflow-visible relative">
             <motion.div
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
